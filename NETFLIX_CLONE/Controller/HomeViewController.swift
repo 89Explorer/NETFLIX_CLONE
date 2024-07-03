@@ -25,6 +25,7 @@ class HomeViewController: UIViewController {
         
         homeFeedTableDelegate()
         homeFeedTableHeaderView()
+        configureNavbar()
     }
     
     override func viewDidLayoutSubviews() {
@@ -42,6 +43,35 @@ class HomeViewController: UIViewController {
     private func homeFeedTableHeaderView() {
         let headerView = HeroHeaderUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 450))
         homeFeedTable.tableHeaderView = headerView
+    }
+    
+    private func configureNavbar() {
+
+        let originalImage = UIImage(named: "logo.png")
+        let scaledSize = CGSize(width: 25, height: 25) // 시스템 버튼과 비슷한 크기
+
+        UIGraphicsBeginImageContextWithOptions(scaledSize, false, 0.0)
+        originalImage?.draw(in: CGRect(origin: .zero, size: scaledSize))
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        // 원본 이미지 색상을 유지하기 위해 렌더링 모드를 .alwaysOriginal로 설정
+        let originalColorImage = scaledImage?.withRenderingMode(.alwaysOriginal)
+
+        let barButton = UIBarButtonItem(image: originalColorImage, style: .plain, target: self, action: #selector(leftBarButtonTapped))
+        navigationItem.leftBarButtonItem = barButton
+        
+        
+        navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(image: UIImage(systemName: "person"), style: .plain, target: self, action: nil),
+            UIBarButtonItem(image: UIImage(systemName: "play.rectangle"), style: .plain, target: self, action: nil)
+        ]
+        
+        navigationController?.navigationBar.tintColor = .label
+    }
+    
+    @objc private func leftBarButtonTapped() {
+        
     }
 }
 
