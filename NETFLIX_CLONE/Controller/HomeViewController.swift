@@ -22,9 +22,9 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         view.addSubview(homeFeedTable)
-        homeFeedTableDelegate()
         
-        homeFeedTable.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 350))
+        homeFeedTableDelegate()
+        homeFeedTableHeaderView()
     }
     
     override func viewDidLayoutSubviews() {
@@ -37,6 +37,11 @@ class HomeViewController: UIViewController {
     private func homeFeedTableDelegate() {
         homeFeedTable.delegate = self
         homeFeedTable.dataSource = self
+    }
+    
+    private func homeFeedTableHeaderView() {
+        let headerView = HeroHeaderUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 450))
+        homeFeedTable.tableHeaderView = headerView
     }
 }
 

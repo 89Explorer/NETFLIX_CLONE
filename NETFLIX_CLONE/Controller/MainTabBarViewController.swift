@@ -9,6 +9,7 @@ import UIKit
 
 class MainTabBarViewController: UITabBarController {
 
+    // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -16,6 +17,7 @@ class MainTabBarViewController: UITabBarController {
         configureTabBar()
     }
 
+    // MARK: Functions
     private func configureTabBar() {
         
         let homeVC = UINavigationController(rootViewController: HomeViewController())
