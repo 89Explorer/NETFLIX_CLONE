@@ -29,6 +29,7 @@ class HomeViewController: UIViewController {
         homeFeedTableDelegate()
         homeFeedTableHeaderView()
         configureNavbar()
+        getTrendingMovies()
     }
     
     override func viewDidLayoutSubviews() {
@@ -76,8 +77,20 @@ class HomeViewController: UIViewController {
     @objc private func leftBarButtonTapped() {
         
     }
+    
+    private func getTrendingMovies() {
+        APICaller.shared.getTrendingMovies { results in
+            switch results {
+            case .success(let movies):
+                print(movies)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
 }
 
+// MARK: Extensions
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     // 테이블의 섹션 전체 수 
