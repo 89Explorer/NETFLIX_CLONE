@@ -28,6 +28,8 @@
 		9D5CC09B2C365EF60075D785 /* TitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CC09A2C365EF60075D785 /* TitleCollectionViewCell.swift */; };
 		9D5CC09E2C365FD30075D785 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 9D5CC09D2C365FD30075D785 /* SDWebImage */; };
 		9D5CC0A02C365FD30075D785 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9D5CC09F2C365FD30075D785 /* SDWebImageMapKit */; };
+		9D5CC0A22C37233D0075D785 /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CC0A12C37233D0075D785 /* TitleTableViewCell.swift */; };
+		9D5CC0A42C37254A0075D785 /* TitleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CC0A32C37254A0075D785 /* TitleViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		9D5CC0952C363D320075D785 /* Title.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Title.swift; sourceTree = "<group>"; };
 		9D5CC0982C36588F0075D785 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9D5CC09A2C365EF60075D785 /* TitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCollectionViewCell.swift; sourceTree = "<group>"; };
+		9D5CC0A12C37233D0075D785 /* TitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
+		9D5CC0A32C37254A0075D785 /* TitleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +175,7 @@
 		9D5CC08B2C34FA950075D785 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				9D5CC0A32C37254A0075D785 /* TitleViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -181,6 +186,7 @@
 				9D5CC08F2C34FAD50075D785 /* CollectionViewTableViewCell.swift */,
 				9D5CC0912C34FF020075D785 /* HeroHeaderUIView.swift */,
 				9D5CC09A2C365EF60075D785 /* TitleCollectionViewCell.swift */,
+				9D5CC0A12C37233D0075D785 /* TitleTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -356,8 +362,10 @@
 				9D5CC09B2C365EF60075D785 /* TitleCollectionViewCell.swift in Sources */,
 				9D5CC0902C34FAD50075D785 /* CollectionViewTableViewCell.swift in Sources */,
 				9D5CC0992C36588F0075D785 /* Extensions.swift in Sources */,
+				9D5CC0A22C37233D0075D785 /* TitleTableViewCell.swift in Sources */,
 				9D5CC0542C34B77F0075D785 /* MainTabBarViewController.swift in Sources */,
 				9D5CC0942C3588CA0075D785 /* APICaller.swift in Sources */,
+				9D5CC0A42C37254A0075D785 /* TitleViewModel.swift in Sources */,
 				9D5CC0502C34B77F0075D785 /* AppDelegate.swift in Sources */,
 				9D5CC0522C34B77F0075D785 /* SceneDelegate.swift in Sources */,
 			);
