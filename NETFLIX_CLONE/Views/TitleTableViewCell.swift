@@ -53,13 +53,11 @@ class TitleTableViewCell: UITableViewCell {
     func configure(with model: TitleViewModel) {
         
         guard let url = URL(string: "https://image.tmdb.org/t/p/w500/\(model.posterURL)") else { return }
-//        DispatchQueue.main.async {
-//            self.titlesPosterUIImageView.sd_setImage(with: url, completed: nil)
-//            self.titleLabel.text = model.titleName
-//            
-//        }
-        self.titlesPosterUIImageView.sd_setImage(with: url, completed: nil)
-        self.titleLabel.text = model.titleName
+        DispatchQueue.main.async {
+            self.titlesPosterUIImageView.sd_setImage(with: url, completed: nil)
+            self.titleLabel.text = model.titleName
+            
+        }
     }
     
     
