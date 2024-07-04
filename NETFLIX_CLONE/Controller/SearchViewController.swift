@@ -8,22 +8,96 @@
 import UIKit
 
 class SearchViewController: UIViewController {
+    
+    // MARK: Variables
+    private var titles: [Title] = []
+    
+    // MARK: UI Components
+    private let discoverTable: UITableView = {
+        let table = UITableView()
+        table.register(TitleTableViewCell.self, forCellReuseIdentifier: TitleTableViewCell.identifier)
+        return table
+    }()
+    
+    private let searchController: UISearchController = {
+        let controller = UISearchController(searchResultsController: SearchResultsViewController())
+        controller.searchBar.placeholder = "Search for a Movie or Tv or Person"
+        controller.searchBar.searchBarStyle = .minimal
+        return controller
+    }()
 
+    // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .systemBackground
+        title = "Searh"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationItem.largeTitleDisplayMode = .always
+        
+        view.addSubview(discoverTable)
+        discoverTableDelegate()
+        navigationItem.searchController = searchController
+        navigationController?.navigationBar.tintColor = .label
+        
+        searchControllerDelegate()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        discoverTable.frame = view.bounds
     }
-    */
+    
+    // MARK: Functions
+    private func discoverTableDelegate() {
+        discoverTable.delegate = self
+        discoverTable.dataSource = self
+    }
+    
+    private func searchControllerDelegate() {
+        searchController.searchResultsUpdater = self
+    }
+    
+}
 
+// MARK: Extensions
+extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return titles.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TitleTableViewCell.identifier, for: indexPath) as? TitleTableViewCell else { return UITableViewCell() }
+        
+        let title = titles[indexPath.row]
+        let model = TitleViewModel(titleName: (title.original_name ?? title.original_title) ?? "UnKnown", posterURL: title.poster_path ?? "")
+        cell.configure(with: model)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 140 
+    }
+}
+
+extension SearchViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        
+        guard let keyWord = searchBar.text,
+              !keyWord.trimmingCharacters(in: .whitespaces).isEmpty,
+              keyWord.trimmingCharacters(in: .whitespaces).count >= 2,
+              let resultsController = searchController.searchResultsController as? SearchResultsViewController else { return }
+        
+        APICaller.shared.getDiscoverMulti(with: keyWord) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let titles):
+                    resultsController.titles = titles
+                    resultsController.searchResultsCollectionView.reloadData()
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        }
+    }
 }

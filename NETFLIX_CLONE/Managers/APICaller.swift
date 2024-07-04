@@ -241,4 +241,50 @@ class APICaller {
         }
         task.resume()
     }
+    
+    func getDiscoverMulti(with keyWord: String, completion: @escaping (Result<[Title], Error>) -> Void) {
+        guard let keyWord = keyWord.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return }
+        let url = URL(string: "https://api.themoviedb.org/3/search/multi")!
+        var components = URLComponents(url: url, resolvingAgainstBaseURL: true)!
+        let queryItems: [URLQueryItem] = [
+          URLQueryItem(name: "query", value: keyWord),
+          URLQueryItem(name: "include_adult", value: "false"),
+          URLQueryItem(name: "language", value: "en-US"),
+          URLQueryItem(name: "page", value: "1"),
+        ]
+        components.queryItems = components.queryItems.map { $0 + queryItems } ?? queryItems
+
+        var request = URLRequest(url: components.url!)
+        request.httpMethod = "GET"
+        request.timeoutInterval = 10
+        request.allHTTPHeaderFields = [
+          "accept": "application/json",
+          "Authorization": "Bearer \(Constants.API_KEY)"
+        ]
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Error occurred: \(error.localizedDescription)")
+                completion(.failure(APIError.failedToGetData))
+                return
+            }
+            guard let data = data else {
+                print("No data received")
+                completion(.failure(APIError.failedToGetData))
+                return
+            }
+            do {
+                // Print JSON data to debug
+//                if let json = try? JSONSerialization.jsonObject(with: data, options: []) {
+//                    print("JSON Response: \(json)")
+//                }
+                let results = try JSONDecoder().decode(TrendingTitleResponse.self, from: data)
+                completion(.success(results.results))
+            } catch {
+                print("JSON Decoding error: \(error.localizedDescription)")
+                completion(.failure(APIError.failedToGetData))
+            }
+        }
+        task.resume()
+    }
 }

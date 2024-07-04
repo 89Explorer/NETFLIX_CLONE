@@ -30,6 +30,7 @@
 		9D5CC0A02C365FD30075D785 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9D5CC09F2C365FD30075D785 /* SDWebImageMapKit */; };
 		9D5CC0A22C37233D0075D785 /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CC0A12C37233D0075D785 /* TitleTableViewCell.swift */; };
 		9D5CC0A42C37254A0075D785 /* TitleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CC0A32C37254A0075D785 /* TitleViewModel.swift */; };
+		9D5CC0A62C3737420075D785 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CC0A52C3737420075D785 /* SearchResultsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		9D5CC09A2C365EF60075D785 /* TitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCollectionViewCell.swift; sourceTree = "<group>"; };
 		9D5CC0A12C37233D0075D785 /* TitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
 		9D5CC0A32C37254A0075D785 /* TitleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewModel.swift; sourceTree = "<group>"; };
+		9D5CC0A52C3737420075D785 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 				9D5CC0852C34D6420075D785 /* UpcomingViewController.swift */,
 				9D5CC0872C34D64C0075D785 /* SearchViewController.swift */,
 				9D5CC0892C34D68D0075D785 /* DownloadsViewController.swift */,
+				9D5CC0A52C3737420075D785 /* SearchResultsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D5CC0862C34D6420075D785 /* UpcomingViewController.swift in Sources */,
+				9D5CC0A62C3737420075D785 /* SearchResultsViewController.swift in Sources */,
 				9D5CC0922C34FF020075D785 /* HeroHeaderUIView.swift in Sources */,
 				9D5CC0962C363D320075D785 /* Title.swift in Sources */,
 				9D5CC0882C34D64C0075D785 /* SearchViewController.swift in Sources */,
