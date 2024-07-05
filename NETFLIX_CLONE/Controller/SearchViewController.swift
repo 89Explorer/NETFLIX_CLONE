@@ -13,11 +13,12 @@ class SearchViewController: UIViewController {
     private var titles: [Title] = []
     
     // MARK: UI Components
-    private let discoverTable: UITableView = {
-        let table = UITableView()
-        table.register(TitleTableViewCell.self, forCellReuseIdentifier: TitleTableViewCell.identifier)
-        return table
-    }()
+    // discoverTable은 새로 만든 getDiscoverMulti함수 제대로 동작하는지 확인하기 위함
+//    private let discoverTable: UITableView = {
+//        let table = UITableView()
+//        table.register(TitleTableViewCell.self, forCellReuseIdentifier: TitleTableViewCell.identifier)
+//        return table
+//    }()
     
     private let searchController: UISearchController = {
         let controller = UISearchController(searchResultsController: SearchResultsViewController())
@@ -34,8 +35,8 @@ class SearchViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationItem.largeTitleDisplayMode = .always
         
-        view.addSubview(discoverTable)
-        discoverTableDelegate()
+        //view.addSubview(discoverTable)
+        //discoverTableDelegate()
         navigationItem.searchController = searchController
         navigationController?.navigationBar.tintColor = .label
         
@@ -44,14 +45,14 @@ class SearchViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        discoverTable.frame = view.bounds
+//        discoverTable.frame = view.bounds
     }
     
     // MARK: Functions
-    private func discoverTableDelegate() {
-        discoverTable.delegate = self
-        discoverTable.dataSource = self
-    }
+//    private func discoverTableDelegate() {
+//        discoverTable.delegate = self
+//        discoverTable.dataSource = self
+//    }
     
     private func searchControllerDelegate() {
         searchController.searchResultsUpdater = self
@@ -92,8 +93,10 @@ extension SearchViewController: UISearchResultsUpdating {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let titles):
-                    resultsController.titles = titles
-                    resultsController.searchResultsCollectionView.reloadData()
+                    DispatchQueue.main.async {
+                        resultsController.titles = titles
+                        resultsController.searchResultsCollectionView.reloadData()
+                    }
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
