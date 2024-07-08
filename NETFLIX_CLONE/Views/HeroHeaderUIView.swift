@@ -12,7 +12,7 @@ class HeroHeaderUIView: UIView {
     // MARK: UI Components
     private let heroImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         imageView.image = UIImage(named: "poster.jpg")
         return imageView
@@ -87,4 +87,11 @@ class HeroHeaderUIView: UIView {
         button.tintColor = .label
         return button
     }
+    
+    public func configure(with model: TitleViewModel) {
+        guard let url = URL(string: "https://image.tmdb.org/t/p/w500/\(model.posterURL)") else { return }
+        
+        heroImageView.sd_setImage(with: url, completed: nil)
+    }
+    
 }
