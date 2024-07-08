@@ -7,11 +7,16 @@
 
 import UIKit
 
+protocol CollectionViewTableViewCellDelegate: AnyObject {
+    func collectionViewTableViewCellDidTapCell(_ cell: CollectionViewTableViewCell, viewModel:TitlePreviewViewModel)
+}
 class CollectionViewTableViewCell: UITableViewCell {
     
     // MARK: Variables
     static let identifier = "CollectionViewTableViewCell"
-    // HomeViewController에서 받은 데이터를 담기 위한 변수 배열 
+    
+    weak var delegate: CollectionViewTableViewCellDelegate?
+    // HomeViewController에서 받은 데이터를 담기 위한 변수 배열
     private var titles: [Title] = []
     
     // MARK: UI Components
@@ -81,10 +86,18 @@ extension CollectionViewTableViewCell: UICollectionViewDelegate, UICollectionVie
         let title = titles[indexPath.row]
         guard let titleName = title.original_title ?? title.original_name else { return }
         
-        APICaller.shared.getMovie(with: titleName + " trailer") { result in
+        APICaller.shared.getMovie(with: titleName + " trailer") { [weak self] result in
             switch result {
             case .success(let videoElement):
-                print(videoElement.id)
+                
+                let title = self?.titles[indexPath.row]
+                guard let titleOverview = title?.overview else { return }
+                guard let strongSelf = self else { return }
+                
+                let viewModel = TitlePreviewViewModel(title: titleName, youtubeView: videoElement, titleOverview: titleOverview)
+                
+                self?.delegate?.collectionViewTableViewCellDidTapCell(strongSelf, viewModel: viewModel)
+                
             case .failure(let error):
                 print(error.localizedDescription)
             }
