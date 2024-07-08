@@ -41,6 +41,7 @@ class HomeViewController: UIViewController {
         homeFeedTableDelegate()
         homeFeedTableHeaderView()
         configureNavbar()
+
     }
     
     override func viewDidLayoutSubviews() {

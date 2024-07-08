@@ -12,6 +12,8 @@ struct Constants {
     // static let API_KEY = "678025f9b853729922748d16feb442f9"
     static let baseURL = "https://api.themoviedb.org"
     static let API_KEY = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NzgwMjVmOWI4NTM3Mjk5MjI3NDhkMTZmZWI0NDJmOSIsIm5iZiI6MTcyMDA3MjU2OS4zMjg0ODIsInN1YiI6IjY1ZTUyODRmMjBlNmE1MDE4NjUzYzIwYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.NCie8pDtWpOfDiQSjXXIWNx892BSvMfCW-7pOoliFfA"
+    static let YoutubeAPI_KEY = "AIzaSyDixy1Qj8Au-XBR1JBC06spckkK6O0jXBI"
+    static let YoutubeBaseURL = "https://www.googleapis.com/youtube/v3/search?"
 }
 
 // MARK: ERROR
@@ -286,5 +288,25 @@ class APICaller {
             }
         }
         task.resume()
+    }
+    
+    
+    func getMovie(with keyWord: String, completion: @escaping (Result<VideoElement, Error>) -> Void) {
+        guard let keyWord = keyWord.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return }
+        
+        guard let url = URL(string: "\(Constants.YoutubeBaseURL)q=\(keyWord)&key=\(Constants.YoutubeAPI_KEY)") else { return }
+        
+        let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, _, error in
+            guard let data = data, error == nil else { return }
+            
+            do {
+                let results = try JSONDecoder().decode(YoutubeSearchResponse.self, from: data)
+                completion(.success(results.items[0]))
+            } catch {
+                completion(.failure(error))
+                print(error.localizedDescription)
+            }
+        }
+        task.resume() 
     }
 }

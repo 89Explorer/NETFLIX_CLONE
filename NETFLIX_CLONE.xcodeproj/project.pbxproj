@@ -31,6 +31,7 @@
 		9D5CC0A22C37233D0075D785 /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CC0A12C37233D0075D785 /* TitleTableViewCell.swift */; };
 		9D5CC0A42C37254A0075D785 /* TitleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CC0A32C37254A0075D785 /* TitleViewModel.swift */; };
 		9D5CC0A62C3737420075D785 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CC0A52C3737420075D785 /* SearchResultsViewController.swift */; };
+		9D5CC0A82C3BC6570075D785 /* YoutubeSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CC0A72C3BC6570075D785 /* YoutubeSearchResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		9D5CC0A12C37233D0075D785 /* TitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
 		9D5CC0A32C37254A0075D785 /* TitleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewModel.swift; sourceTree = "<group>"; };
 		9D5CC0A52C3737420075D785 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
+		9D5CC0A72C3BC6570075D785 /* YoutubeSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeSearchResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CC0952C363D320075D785 /* Title.swift */,
+				9D5CC0A72C3BC6570075D785 /* YoutubeSearchResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				9D5CC0902C34FAD50075D785 /* CollectionViewTableViewCell.swift in Sources */,
 				9D5CC0992C36588F0075D785 /* Extensions.swift in Sources */,
 				9D5CC0A22C37233D0075D785 /* TitleTableViewCell.swift in Sources */,
+				9D5CC0A82C3BC6570075D785 /* YoutubeSearchResponse.swift in Sources */,
 				9D5CC0542C34B77F0075D785 /* MainTabBarViewController.swift in Sources */,
 				9D5CC0942C3588CA0075D785 /* APICaller.swift in Sources */,
 				9D5CC0A42C37254A0075D785 /* TitleViewModel.swift in Sources */,
