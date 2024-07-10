@@ -34,6 +34,7 @@
 		9D5CC0A82C3BC6570075D785 /* YoutubeSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CC0A72C3BC6570075D785 /* YoutubeSearchResponse.swift */; };
 		9D5CC0AA2C3BF92E0075D785 /* TitlePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CC0A92C3BF92E0075D785 /* TitlePreviewViewController.swift */; };
 		9D5CC0AC2C3BFB980075D785 /* TitlePreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CC0AB2C3BFB980075D785 /* TitlePreviewViewModel.swift */; };
+		9D5CC0AE2C3E536E0075D785 /* DatePersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CC0AD2C3E536E0075D785 /* DatePersistenceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		9D5CC0A72C3BC6570075D785 /* YoutubeSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeSearchResponse.swift; sourceTree = "<group>"; };
 		9D5CC0A92C3BF92E0075D785 /* TitlePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlePreviewViewController.swift; sourceTree = "<group>"; };
 		9D5CC0AB2C3BFB980075D785 /* TitlePreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlePreviewViewModel.swift; sourceTree = "<group>"; };
+		9D5CC0AD2C3E536E0075D785 /* DatePersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePersistenceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5CC0932C3588CA0075D785 /* APICaller.swift */,
+				9D5CC0AD2C3E536E0075D785 /* DatePersistenceManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				9D5CC0942C3588CA0075D785 /* APICaller.swift in Sources */,
 				9D5CC0A42C37254A0075D785 /* TitleViewModel.swift in Sources */,
 				9D5CC0502C34B77F0075D785 /* AppDelegate.swift in Sources */,
+				9D5CC0AE2C3E536E0075D785 /* DatePersistenceManager.swift in Sources */,
 				9D5CC0AC2C3BFB980075D785 /* TitlePreviewViewModel.swift in Sources */,
 				9D5CC0522C34B77F0075D785 /* SceneDelegate.swift in Sources */,
 			);

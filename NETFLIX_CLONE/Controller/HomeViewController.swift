@@ -41,9 +41,13 @@ class HomeViewController: UIViewController {
         homeFeedTableDelegate()
         homeFeedTableHeaderView()
         configureNavbar()
-        configureHeroHeaderView()
+        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureHeroHeaderView()
+    }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         // 테이블 뷰 적용
@@ -92,7 +96,7 @@ class HomeViewController: UIViewController {
             switch result {
             case .success(let titles):
                 let selectedTitle = titles.randomElement()
-                self?.randomTrendingMovie = selectedTitle
+                // self?.randomTrendingMovie = selectedTitle
                 self?.headerView?.configure(with: TitleViewModel(titleName: selectedTitle?.original_title ?? "", posterURL: selectedTitle?.poster_path ?? "" ))
             case .failure(let error):
                 print(error.localizedDescription)
